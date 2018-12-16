@@ -1,15 +1,13 @@
 <img align="center" src="https://i.imgur.com/tUW751B.png" height="200" width="200">
 
+<p align="center"><h1>MusicBotW</h1></p>
 
-<p align="center>" ## JMusicBot </p>
-
-
-[![Downloads](https://img.shields.io/github/downloads/jagrosh/MusicBot/total.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/stargazers)
-[![Release](https://img.shields.io/github/release/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![License](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/blob/master/LICENSE)
-[![CircleCI](https://img.shields.io/circleci/project/github/jagrosh/MusicBot/master.svg)](https://circleci.com/gh/jagrosh/MusicBot)
-[![Travis-CI](https://travis-ci.com/jagrosh/MusicBot.svg?branch=master)](https://travis-ci.com/jagrosh/MusicBot)
+[![Downloads](https://img.shields.io/github/downloads/MerdedSpade/MusicBotW/total.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
+[![Stars](https://img.shields.io/github/stars/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/stargazers)
+[![Release](https://img.shields.io/github/release/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
+[![License](https://img.shields.io/github/license/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/blob/master/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/MerdedSpade/MusicBotW/master.svg)](https://circleci.com/gh/MerdedSpade/MusicBotW)
+[![Travis-CI](https://travis-ci.com/MerdedSpade/MusicBotW.svg?branch=master)](https://travis-ci.com/MerdedSpade/MusicBotW)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/gdu6nyte5psj6xfk/branch/master?svg=true)](https://ci.appveyor.com/project/jagrosh/musicbot/branch/master)
 
 Музыкальный бот Discord с чистым интерфейсом, который можно легко установить и запустить
