@@ -1,4 +1,4 @@
-/*
+/*/*
  * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/*
 package com.jagrosh.jmusicbot.commands.music;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -28,7 +29,7 @@ import net.dv8tion.jda.core.Permission;
 /**
  *
  * @author John Grosh (john.a.grosh@gmail.com)
- */
+ *
 public class LyricsCmd extends MusicCommand
 {
     private final LyricsClient client = new LyricsClient();
@@ -68,3 +69,4 @@ public class LyricsCmd extends MusicCommand
                 .setDescription(lyrics.getContent()).build());
     }
 }
+*/
