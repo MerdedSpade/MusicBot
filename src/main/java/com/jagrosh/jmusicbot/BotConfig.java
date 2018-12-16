@@ -108,13 +108,13 @@ public class BotConfig
             // validate bot token
             if(token==null || token.isEmpty() || token.equalsIgnoreCase("BOT_TOKEN_HERE"))
             {
-                token = prompt.prompt("Please provide a bot token."
-                        + "\nInstructions for obtaining a token can be found here:"
+                token = prompt.prompt("Пожалуйста предоставьте токен бота."
+                        + "\nИнструкции по получению токена::"
                         + "\nhttps://github.com/jagrosh/MusicBot/wiki/Getting-a-Bot-Token."
-                        + "\nBot Token: ");
+                        + "\nТокен бота: ");
                 if(token==null)
                 {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "No token provided! Exiting.");
+                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Токен не был предоставлен! Выхожу.");
                     return;
                 }
                 else
@@ -128,11 +128,11 @@ public class BotConfig
             {
                 try
                 {
-                    owner = Long.parseLong(prompt.prompt("Owner ID was missing, or the provided owner ID is not valid."
-                        + "\nPlease provide the User ID of the bot's owner."
-                        + "\nInstructions for obtaining your User ID can be found here:"
+                    owner = Long.parseLong(prompt.prompt("Требуется ID владельца, или предоставленный ID неверный."
+                        + "\nПожалуйста предоставьте ID Пользователя владельца бота."
+                        + "\nИнструкции по получению ID пользователя могут быть найдены здесь:"
                         + "\nhttps://github.com/jagrosh/MusicBot/wiki/Finding-Your-User-ID"
-                        + "\nOwner User ID: "));
+                        + "\nID пользователя владельца: "));
                 }
                 catch(NumberFormatException | NullPointerException ex)
                 {
@@ -140,7 +140,7 @@ public class BotConfig
                 }
                 if(owner<=0)
                 {
-                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "Invalid User ID! Exiting.");
+                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "Неверный ID пользователя! Выхожу.");
                     System.exit(0);
                 }
                 else
@@ -159,8 +159,8 @@ public class BotConfig
                 }
                 catch(IOException ex) 
                 {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Failed to write new config options to config.txt: "+ex
-                        + "\nPlease make sure that the files are not on your desktop or some other restricted area.");
+                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Не удалось записать новую опцию конфигурации в config.txt: "+ex
+                        + "\nУбедитесь что файл находится в разрешённой области.");
                 }
             }
             
