@@ -10,28 +10,24 @@
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/gdu6nyte5psj6xfk/branch/master?svg=true)](https://ci.appveyor.com/project/jagrosh/musicbot/branch/master)
 
 ## JMusicBot
-A Discord music bot with a clean interface, and that is easy to set up and run yourself
+Музыкальный бот Discord с чистым интерфейсом, и который можно легко установить и запустить
 
-[![Setup](http://i.imgur.com/VvXYp5j.png)](https://github.com/jagrosh/MusicBot/wiki/Setup)
+## Преимущеста
+  * Легко запустит (просто убедитесь что Java установлена, и запускайте!)
+  * Быстрая загрузка песен
+  * Не нужно сторонних ключей (кроме токена Discord бота)
+  * Плавное воспроизведение
+  * Роль "DJ" для каждого сервера, которая может управлять музыкой
+  * Чистые и прекрасные меню
+  * Статус воспроизведения в теме канала!
+  * Поддерживает много сайтов, включая Youtube, Soundcloud, и другие
+  * Поддерживает много сетевых радио/трансляций
+  * Поддерживает локальные файлы
+  * Поддержка плейлистов (с web/youtube, и локальные)
 
-## Features
-  * Easy to run (just make sure Java is installed, and run!)
-  * Fast loading of songs
-  * No external keys needed (besides a Discord Bot token)
-  * Smooth playback
-  * Server-specific setup for the "DJ" role that can moderate the music
-  * Clean and beautiful menus
-  * Channel-topic playback bar
-  * Supports many sites, including Youtube, Soundcloud, and more
-  * Supports many online radio/streams
-  * Supports local files
-  * Playlist support (both web/youtube, and local)
+## Установка
+Пожалуйста посмотрите [Страницу установки](https://github.com/jagrosh/MusicBot/wiki/Setup) в оригинальном вики чтобы запустить его у себя!
 
-## Setup
-Please see the [Setup Page](https://github.com/jagrosh/MusicBot/wiki/Setup) in the wiki to run this bot yourself!
-
-## Questions/Suggestions/Bug Reports
-**Please read the [Suggested/Planned Features List](https://github.com/jagrosh/MusicBot/projects/1) before suggesting a feature**. If you'd like to suggest changes to how the bot functions, recommend more customization options, or report bugs, feel free to either open an [Issue](https://github.com/jagrosh/MusicBot/issues) on this repository, or join [my Discord server](https://discord.gg/0p9LSGoRLu6Pet0k). (Note: I will not accept any feature requests that will require additional API keys, nor any non-music features). If you like this bot, be sure to add a star to the libraries that make this possible: [**JDA**](https://github.com/DV8FromTheWorld/JDA) and [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)
 
 ## Example
 ![Example](https://i.imgur.com/tevrtKt.png)
