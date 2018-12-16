@@ -2,7 +2,9 @@
 # Created by https://www.gitignore.io/api/java,hugo,maven,eclipse,intellij,intellij+all
 # Edit at https://www.gitignore.io/?templates=java,hugo,maven,eclipse,intellij,intellij+all
 
+### MusicBotW ###
 config.txt
+
 
 ### Eclipse ###
 
