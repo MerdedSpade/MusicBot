@@ -42,8 +42,8 @@ public class QueueCmd extends MusicCommand
     {
         super(bot);
         this.name = "queue";
-        this.help = "shows the current queue";
-        this.arguments = "[pagenum]";
+        this.help = "показывает текущую очередь";
+        this.arguments = "[страница]";
         this.aliases = new String[]{"list"};
         this.bePlaying = true;
         this.botPermissions = new Permission[]{Permission.MESSAGE_ADD_REACTION,Permission.MESSAGE_EMBED_LINKS};
@@ -74,7 +74,7 @@ public class QueueCmd extends MusicCommand
             Message nowp = ah.getNowPlaying(event.getJDA());
             Message nonowp = ah.getNoMusicPlaying(event.getJDA());
             Message built = new MessageBuilder()
-                    .setContent(event.getClient().getWarning() + " There is no music in the queue!")
+                    .setContent(event.getClient().getWarning() + " В очереди нет музыки!")
                     .setEmbed((nowp==null ? nonowp : nowp).getEmbeds().get(0)).build();
             event.reply(built, m -> 
             {
@@ -108,8 +108,8 @@ public class QueueCmd extends MusicCommand
             sb.append(ah.getPlayer().isPaused() ? JMusicBot.PAUSE_EMOJI : JMusicBot.PLAY_EMOJI).append(" **")
                     .append(ah.getPlayer().getPlayingTrack().getInfo().title).append("**\n");
         }
-        return FormatUtil.filter(sb.append(success).append(" Current Queue | ").append(songslength)
-                .append(" entries | `").append(FormatUtil.formatTime(total)).append("` ")
+        return FormatUtil.filter(sb.append(success).append(" Текущая очередь | ").append(songslength)
+                .append(" объектов | `").append(FormatUtil.formatTime(total)).append("` ")
                 .append(repeatmode ? "| \uD83D\uDD01" : "").toString());
     }
 }

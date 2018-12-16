@@ -37,7 +37,7 @@ public class LyricsCmd extends MusicCommand
     {
         super(bot);
         this.name = "lyrics";
-        this.help = "shows the lyrics to the currently-playing song";
+        this.help = "показывает титры к песне";
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.bePlaying = true;
     }
@@ -58,7 +58,7 @@ public class LyricsCmd extends MusicCommand
         
         if(lyrics == null)
         {
-            event.replyError("Lyrics for `" + title + "` could not be found!");
+            event.replyError("Титры для `" + title + "` не могут быть найдены!");
             return;
         }
         

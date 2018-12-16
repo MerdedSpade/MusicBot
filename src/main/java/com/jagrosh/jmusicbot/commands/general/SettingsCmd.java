@@ -33,8 +33,8 @@ public class SettingsCmd extends Command
     public SettingsCmd()
     {
         this.name = "settings";
-        this.help = "shows the bots settings";
-        this.aliases = new String[]{"status"};
+        this.help = "показывает настройки бота";
+        this.aliases = new String[]{"sets"};
         this.guildOnly = true;
     }
     
@@ -45,19 +45,19 @@ public class SettingsCmd extends Command
         MessageBuilder builder = new MessageBuilder()
                 .append("\uD83C\uDFA7 **")
                 .append(event.getSelfUser().getName())
-                .append("** settings:");
+                .append("** Настройки:");
         TextChannel tchan = s.getTextChannel(event.getGuild());
         VoiceChannel vchan = s.getVoiceChannel(event.getGuild());
         Role role = s.getRole(event.getGuild());
         EmbedBuilder ebuilder = new EmbedBuilder()
                 .setColor(event.getSelfMember().getColor())
-                .setDescription("Text Channel: "+(tchan==null ? "Any" : "**#"+tchan.getName()+"**")
-                        + "\nVoice Channel: "+(vchan==null ? "Any" : "**"+vchan.getName()+"**")
-                        + "\nDJ Role: "+(role==null ? "None" : "**"+role.getName()+"**")
-                        + "\nRepeat Mode: **"+(s.getRepeatMode() ? "On" : "Off")+"**"
-                        + "\nDefault Playlist: "+(s.getDefaultPlaylist()==null ? "None" : "**"+s.getDefaultPlaylist()+"**")
+                .setDescription("Текстовый канал: "+(tchan==null ? "Любой" : "**#"+tchan.getName()+"**")
+                        + "\nГолосовой канал: "+(vchan==null ? "Любой" : "**"+vchan.getName()+"**")
+                        + "\nDJ роль: "+(role==null ? "Нету" : "**"+role.getName()+"**")
+                        + "\nРежим повтора: **"+(s.getRepeatMode() ? "On" : "Off")+"**"
+                        + "\nСтандартный плэйлист: "+(s.getDefaultPlaylist()==null ? "Нету" : "**"+s.getDefaultPlaylist()+"**")
                         )
-                .setFooter(event.getJDA().getGuilds().size()+" servers | "
+                .setFooter(event.getJDA().getGuilds().size()+" серверов | "
                         +event.getJDA().getGuilds().stream().filter(g -> g.getSelfMember().getVoiceState().inVoiceChannel()).count()
                         +" audio connections", null);
         event.getChannel().sendMessage(builder.setEmbed(ebuilder.build()).build()).queue();

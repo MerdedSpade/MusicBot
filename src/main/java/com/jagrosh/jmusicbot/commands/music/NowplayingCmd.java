@@ -32,7 +32,7 @@ public class NowplayingCmd extends MusicCommand
     {
         super(bot);
         this.name = "nowplaying";
-        this.help = "shows the song that is currently playing";
+        this.help = "показывает песню которая сейчас играет";
         this.aliases = new String[]{"np","current"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
     }
