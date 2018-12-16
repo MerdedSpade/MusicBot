@@ -32,13 +32,14 @@ import org.json.JSONTokener;
 /**
  *
  * @author John Grosh <john.a.grosh@gmail.com>
+ * @author Sergey Abroskin <minepixelproject@gmail.com>
  */
 public class OtherUtil
 {
-    public final static String NEW_VERSION_AVAILABLE = "There is a new version of JMusicBot available!\n"
-                    + "Current version: %s\n"
-                    + "New Version: %s\n\n"
-                    + "Please visit https://github.com/jagrosh/MusicBot/releases/latest to get the latest release.";
+    public final static String NEW_VERSION_AVAILABLE = "Новая версия MusicBotW доступна!\n"
+                    + "Текущая версия: %s\n"
+                    + "Новая версия: %s\n\n"
+                    + "Пожалуйста посетите https://github.com/MerdedSpade/MusicBotW/releases/latest чтобы получить последнюю версию.";
     
     public static InputStream imageFromUrl(String url)
     {
@@ -48,7 +49,7 @@ public class OtherUtil
         {
             URL u = new URL(url);
             URLConnection urlConnection = u.openConnection();
-            urlConnection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36");
+            urlConnection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Blink/537.36 (KHTML, like Gecko) Chrome/71.0.3578 Safari/537.36");
             return urlConnection.getInputStream();
         }
         catch(IOException | IllegalArgumentException ignore) {}
@@ -97,7 +98,7 @@ public class OtherUtil
         
         if(latestVersion!=null && !latestVersion.equals(version))
         {
-            prompt.alert(Prompt.Level.WARNING, "Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
+            prompt.alert(Prompt.Level.WARNING, "Версия", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
         }
         
         // Return the current version
@@ -117,7 +118,7 @@ public class OtherUtil
         try
         {
             Response response = new OkHttpClient.Builder().build()
-                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/jagrosh/MusicBot/releases/latest").build())
+                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/MerdedSpade/MusicBotW/releases/latest").build())
                     .execute();
             ResponseBody body = response.body();
             if(body != null)
