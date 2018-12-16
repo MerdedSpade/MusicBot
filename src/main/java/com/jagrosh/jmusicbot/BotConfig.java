@@ -78,7 +78,7 @@ public class BotConfig
             Config config = ConfigFactory.load();
             
             // info on where the config is being loaded from
-            prompt.alert(Prompt.Level.INFO, CONTEXT, "Loading config from "+path.toAbsolutePath().toString());
+            prompt.alert(Prompt.Level.INFO, CONTEXT, "Загрузка конфигурации из "+path.toAbsolutePath().toString());
             
             // set values
             token = config.getString("token");

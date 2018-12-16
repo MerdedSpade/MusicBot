@@ -31,8 +31,8 @@ public class ForceskipCmd extends DJCommand
     {
         super(bot);
         this.name = "forceskip";
-        this.help = "skips the current song";
-        this.aliases = new String[]{"modskip"};
+        this.help = "принудительно пропускает текущую песню";
+        this.aliases = new String[]{"modskip", "fskip", "fsk"};
         this.bePlaying = true;
     }
 
@@ -41,8 +41,8 @@ public class ForceskipCmd extends DJCommand
     {
         AudioHandler handler = (AudioHandler)event.getGuild().getAudioManager().getSendingHandler();
         User u = event.getJDA().getUserById(handler.getRequester());
-        event.reply(event.getClient().getSuccess()+" Skipped **"+handler.getPlayer().getPlayingTrack().getInfo().title
-                +"** (requested by "+(u==null ? "someone" : "**"+u.getName()+"**")+")");
+        event.reply(event.getClient().getSuccess()+" Пропущено **"+handler.getPlayer().getPlayingTrack().getInfo().title
+                +"** (запросил "+(u==null ? "кто-то" : "**"+u.getName()+"**")+")");
         handler.getPlayer().stopTrack();
     }
 }
