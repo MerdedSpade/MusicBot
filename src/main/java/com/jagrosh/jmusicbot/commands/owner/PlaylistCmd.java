@@ -37,7 +37,7 @@ public class PlaylistCmd extends OwnerCommand
         this.guildOnly = false;
         this.name = "playlist";
         this.arguments = "<append|delete|make|setdefault>";
-        this.help = "playlist management";
+        this.help = "управление плэйлистами";
         this.children = new OwnerCommand[]{
             new ListCmd(),
             new AppendlistCmd(),
@@ -50,7 +50,7 @@ public class PlaylistCmd extends OwnerCommand
     @Override
     public void execute(CommandEvent event) 
     {
-        StringBuilder builder = new StringBuilder(event.getClient().getWarning()+" Playlist Management Commands:\n");
+        StringBuilder builder = new StringBuilder(event.getClient().getWarning()+" Команды управления плэйлистами:\n");
         for(Command cmd: this.children)
             builder.append("\n`").append(event.getClient().getPrefix()).append(name).append(" ").append(cmd.getName())
                     .append(" ").append(cmd.getArguments()==null ? "" : cmd.getArguments()).append("` - ").append(cmd.getHelp());
@@ -63,8 +63,8 @@ public class PlaylistCmd extends OwnerCommand
         {
             this.name = "make";
             this.aliases = new String[]{"create"};
-            this.help = "makes a new playlist";
-            this.arguments = "<name>";
+            this.help = "создаёт новый плэйлист";
+            this.arguments = "<имя>";
             this.guildOnly = false;
         }
 
@@ -77,15 +77,15 @@ public class PlaylistCmd extends OwnerCommand
                 try
                 {
                     bot.getPlaylistLoader().createPlaylist(pname);
-                    event.reply(event.getClient().getSuccess()+" Successfully created playlist `"+pname+"`!");
+                    event.reply(event.getClient().getSuccess()+" Успешно создан плэйлист `"+pname+"`!");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to create the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+" Не удалось создать плэйлист: "+e.getLocalizedMessage());
                 }
             }
             else
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` already exists!");
+                event.reply(event.getClient().getError()+" Плэйлист `"+pname+"` уже существует!");
         }
     }
     
@@ -95,7 +95,7 @@ public class PlaylistCmd extends OwnerCommand
         {
             this.name = "delete";
             this.aliases = new String[]{"remove"};
-            this.help = "deletes an existing playlist";
+            this.help = "удаляет существующий плэйлист";
             this.arguments = "<name>";
             this.guildOnly = false;
         }
@@ -105,17 +105,17 @@ public class PlaylistCmd extends OwnerCommand
         {
             String pname = event.getArgs().replaceAll("\\s+", "_");
             if(bot.getPlaylistLoader().getPlaylist(pname)==null)
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` doesn't exist!");
+                event.reply(event.getClient().getError()+" Плэйлист `"+pname+"` не существует!");
             else
             {
                 try
                 {
                     bot.getPlaylistLoader().deletePlaylist(pname);
-                    event.reply(event.getClient().getSuccess()+" Successfully deleted playlist `"+pname+"`!");
+                    event.reply(event.getClient().getSuccess()+" Успешно удалён плэйлист `"+pname+"`!");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to delete the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+" Не удалось удалить плэйлист: "+e.getLocalizedMessage());
                 }
             }
         }
@@ -127,8 +127,8 @@ public class PlaylistCmd extends OwnerCommand
         {
             this.name = "append";
             this.aliases = new String[]{"add"};
-            this.help = "appends songs to an existing playlist";
-            this.arguments = "<name> <URL> | <URL> | ...";
+            this.help = "добавляет песни в существующий плэйлист";
+            this.arguments = "<имя> <URL> | <URL> | ...";
             this.guildOnly = false;
         }
 
@@ -138,13 +138,13 @@ public class PlaylistCmd extends OwnerCommand
             String[] parts = event.getArgs().split("\\s+", 2);
             if(parts.length<2)
             {
-                event.reply(event.getClient().getError()+" Please include a playlist name and URLs to add!");
+                event.reply(event.getClient().getError()+" Пожалуйста напишите имя плэйлиста и URLы для добавления!");
                 return;
             }
             String pname = parts[0];
             Playlist playlist = bot.getPlaylistLoader().getPlaylist(pname);
             if(playlist==null)
-                event.reply(event.getClient().getError()+" Playlist `"+pname+"` doesn't exist!");
+                event.reply(event.getClient().getError()+" Плэйлист `"+pname+"` не существует!");
             else
             {
                 StringBuilder builder = new StringBuilder();
@@ -160,11 +160,11 @@ public class PlaylistCmd extends OwnerCommand
                 try
                 {
                     bot.getPlaylistLoader().writePlaylist(pname, builder.toString());
-                    event.reply(event.getClient().getSuccess()+" Successfully added "+urls.length+" items to playlist `"+pname+"`!");
+                    event.reply(event.getClient().getSuccess()+" Успешно добавлено "+urls.length+" вещей в плэйлист `"+pname+"`!");
                 }
                 catch(IOException e)
                 {
-                    event.reply(event.getClient().getError()+" I was unable to append to the playlist: "+e.getLocalizedMessage());
+                    event.reply(event.getClient().getError()+"Не удалось добавить в плэйлист: "+e.getLocalizedMessage());
                 }
             }
         }
@@ -177,7 +177,7 @@ public class PlaylistCmd extends OwnerCommand
             super(bot);
             this.name = "setdefault";
             this.aliases = new String[]{"default"};
-            this.arguments = "<playlistname|NONE>";
+            this.arguments = "<название плэйлиста|NONE>";
             this.guildOnly = true;
         }
     }
@@ -188,7 +188,7 @@ public class PlaylistCmd extends OwnerCommand
         {
             this.name = "all";
             this.aliases = new String[]{"available","list"};
-            this.help = "lists all available playlists";
+            this.help = "показывает все доступные плэйлисты";
             this.guildOnly = true;
         }
 
@@ -199,17 +199,17 @@ public class PlaylistCmd extends OwnerCommand
                 bot.getPlaylistLoader().createFolder();
             if(!bot.getPlaylistLoader().folderExists())
             {
-                event.reply(event.getClient().getWarning()+" Playlists folder does not exist and could not be created!");
+                event.reply(event.getClient().getWarning()+" Папка плэйлистов не существует или не была создана!");
                 return;
             }
             List<String> list = bot.getPlaylistLoader().getPlaylistNames();
             if(list==null)
-                event.reply(event.getClient().getError()+" Failed to load available playlists!");
+                event.reply(event.getClient().getError()+" Не удалось загрузить доступные плэйлисты!");
             else if(list.isEmpty())
-                event.reply(event.getClient().getWarning()+" There are no playlists in the Playlists folder!");
+                event.reply(event.getClient().getWarning()+" Нету плэйлистов в папке плэйлистов!");
             else
             {
-                StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" Available playlists:\n");
+                StringBuilder builder = new StringBuilder(event.getClient().getSuccess()+" Доступные плэйлисты:\n");
                 list.forEach(str -> builder.append("`").append(str).append("` "));
                 event.reply(builder.toString());
             }

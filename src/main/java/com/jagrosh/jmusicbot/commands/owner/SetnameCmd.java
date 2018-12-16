@@ -29,8 +29,8 @@ public class SetnameCmd extends OwnerCommand
     public SetnameCmd()
     {
         this.name = "setname";
-        this.help = "sets the name of the bot";
-        this.arguments = "<name>";
+        this.help = "устанавливает название бота";
+        this.arguments = "<название>";
         this.guildOnly = false;
     }
     
@@ -41,15 +41,15 @@ public class SetnameCmd extends OwnerCommand
         {
             String oldname = event.getSelfUser().getName();
             event.getSelfUser().getManager().setName(event.getArgs()).complete(false);
-            event.reply(event.getClient().getSuccess()+" Name changed from `"+oldname+"` to `"+event.getArgs()+"`");
+            event.reply(event.getClient().getSuccess()+" Имя изменено с `"+oldname+"` на `"+event.getArgs()+"`");
         } 
         catch(RateLimitedException e) 
         {
-            event.reply(event.getClient().getError()+" Name can only be changed twice per hour!");
+            event.reply(event.getClient().getError()+" Вы можете изменять имя 3 раза в час!");
         }
         catch(Exception e) 
         {
-            event.reply(event.getClient().getError()+" That name is not valid!");
+            event.reply(event.getClient().getError()+" Это имя не верное!");
         }
     }
 }

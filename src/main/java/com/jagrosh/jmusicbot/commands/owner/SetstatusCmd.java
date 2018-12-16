@@ -28,8 +28,8 @@ public class SetstatusCmd extends OwnerCommand
     public SetstatusCmd()
     {
         this.name = "setstatus";
-        this.help = "sets the status the bot displays";
-        this.arguments = "<status>";
+        this.help = "sустанавливает статус бота для отображения";
+        this.arguments = "<статус (на английском)>";
         this.guildOnly = false;
     }
     
@@ -40,15 +40,15 @@ public class SetstatusCmd extends OwnerCommand
             OnlineStatus status = OnlineStatus.fromKey(event.getArgs());
             if(status==OnlineStatus.UNKNOWN)
             {
-                event.replyError("Please include one of the following statuses: `ONLINE`, `IDLE`, `DND`, `INVISIBLE`");
+                event.replyError("Пожалуйста укажите один из следующих статусов: `ONLINE`, `IDLE`, `DND`, `INVISIBLE`");
             }
             else
             {
                 event.getJDA().getPresence().setStatus(status);
-                event.replySuccess("Set the status to `"+status.getKey().toUpperCase()+"`");
+                event.replySuccess("Установлен статус `"+status.getKey().toUpperCase()+"`");
             }
         } catch(Exception e) {
-            event.reply(event.getClient().getError()+" The status could not be set!");
+            event.reply(event.getClient().getError()+" Статус не может быть установлен!");
         }
     }
 }

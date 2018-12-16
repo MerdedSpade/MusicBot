@@ -31,14 +31,14 @@ public class ShutdownCmd extends OwnerCommand
     {
         this.bot = bot;
         this.name = "shutdown";
-        this.help = "safely shuts down";
+        this.help = "безопасно выключает бота";
         this.guildOnly = false;
     }
     
     @Override
     protected void execute(CommandEvent event)
     {
-        event.replyWarning("Shutting down...");
+        event.replyWarning("Выключение...");
         bot.shutdown();
     }
 }
