@@ -56,15 +56,15 @@ public class JMusicBot
         Logger log = LoggerFactory.getLogger("Startup");
         
         // create prompt to handle startup
-        Prompt prompt = new Prompt("JMusicBot", "Switching to nogui mode. You can manually start in nogui mode by including the -Dnogui=true flag.", 
+        Prompt prompt = new Prompt("MusicBotW", "Переключение в режим без графического интерфейса. Вы можете вручную запустить в режиме без графического интерфейса с помощью добавления флага -Dnogui=true.", 
                 "true".equalsIgnoreCase(System.getProperty("nogui", "false")));
         
         // check deprecated nogui mode (new way of setting it is -Dnogui=true)
         for(String arg: args)
             if("-nogui".equalsIgnoreCase(arg))
             {
-                prompt.alert(Prompt.Level.WARNING, "GUI", "The -nogui flag has been deprecated. "
-                        + "Please use the -Dnogui=true flag before the name of the jar. Example: java -jar -Dnogui=true JMusicBot.jar");
+                prompt.alert(Prompt.Level.WARNING, "GUI", "Флаг -nogui больше не заброшен. "
+                        + "Пожалуйста используйте флаг -Dnogui=true перед названием jar файла. Пример: java -jar -Dnogui=true JMusicBot.jar");
                 break;
             }
         
@@ -83,8 +83,8 @@ public class JMusicBot
         Bot bot = new Bot(waiter, config, settings);
         
         AboutCommand aboutCommand = new AboutCommand(Color.BLUE.brighter(),
-                                "a music bot that is [easy to host yourself!](https://github.com/jagrosh/MusicBot) (v"+version+")",
-                                new String[]{"High-quality music playback", "FairQueue™ Technology", "Easy to host yourself"},
+                                "музыкальный бот который [просто захостить у себя!](https://github.com/MerdedSpade/MusicBotW) (v"+version+")",
+                                new String[]{"Высоко-качественное воспроизведение", "Технология FairQueue™", "На Русском."},
                                 RECOMMENDED_PERMS);
         aboutCommand.setIsAuthor(false);
         aboutCommand.setReplacementCharacter("\uD83C\uDFB6");
@@ -159,13 +159,13 @@ public class JMusicBot
             } 
             catch(Exception e) 
             {
-                log.error("Could not start GUI. If you are "
-                        + "running on a server or in a location where you cannot display a "
-                        + "window, please run in nogui mode using the -Dnogui=true flag.");
+                log.error("Не удалось запустить графический интерфейс (GUI). Если вы "
+                        + "запускаете на сервере или в месте где невозможно отобразить "
+                        + "окно, пожалуйста запустите в режиме без графического интерфейса используя флаг -Dnogui=true."); //In Russian, order of words
             }
         }
         
-        log.info("Loaded config from "+config.getConfigLocation());
+        log.info("Загружена конфигуряция из: "+config.getConfigLocation());
         
         // attempt to log in and start
         try
@@ -173,7 +173,7 @@ public class JMusicBot
             JDA jda = new JDABuilder(AccountType.BOT)
                     .setToken(config.getToken())
                     .setAudioEnabled(true)
-                    .setGame(nogame ? null : Game.playing("loading..."))
+                    .setGame(nogame ? null : Game.playing("Загрузка..."))
                     .setStatus(config.getStatus()==OnlineStatus.INVISIBLE||config.getStatus()==OnlineStatus.OFFLINE ? OnlineStatus.INVISIBLE : OnlineStatus.DO_NOT_DISTURB)
                     .addEventListener(client, waiter, new Listener(bot))
                     .setBulkDeleteSplittingEnabled(true)
@@ -182,14 +182,14 @@ public class JMusicBot
         }
         catch (LoginException ex)
         {
-            log.error(ex+"\nPlease make sure you are "
-                    + "editing the correct config.txt file, and that you have used the "
-                    + "correct token (not the 'secret'!)");
+            log.error(ex+"\nПожалуйста убедитесь что "
+                    + "вы корректно отредактировали файл config.txt, и он использует "
+                    + "корректный токен (не 'Секретный ключ'!)");
             System.exit(1);
         }
         catch(IllegalArgumentException ex)
         {
-            log.error("Some aspect of the configuration is invalid: "+ex);
+            log.error("В конфигурации что-то не так: "+ex);
             System.exit(1);
         }
     }
