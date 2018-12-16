@@ -237,7 +237,7 @@ public class AudioHandler extends AudioEventAdapter implements AudioSendHandler
         return new MessageBuilder()
                 .setContent(FormatUtil.filter(manager.getBot().getConfig().getSuccess()+" **Now Playing...**"))
                 .setEmbed(new EmbedBuilder()
-                .setTitle("No music playing")
+                .setTitle("Музыка не играет")
                 .setDescription(JMusicBot.STOP_EMOJI+" "+FormatUtil.progressBar(-1)+" "+FormatUtil.volumeIcon(audioPlayer.getVolume()))
                 .setColor(guild.getSelfMember().getColor())
                 .build()).build();
@@ -250,14 +250,14 @@ public class AudioHandler extends AudioEventAdapter implements AudioSendHandler
             long userid = getRequester();
             AudioTrack track = audioPlayer.getPlayingTrack();
             String title = track.getInfo().title;
-            if(title==null || title.equals("Unknown Title"))
+            if(title==null || title.equals("Неизвестное название"))
                 title = track.getInfo().uri;
             return "**"+title+"** ["+(userid==0 ? "autoplay" : "<@"+userid+">")+"]"
                     + "\n"+(audioPlayer.isPaused()?"\u23F8":"\u25B6")+" "
                     +"["+FormatUtil.formatTime(track.getDuration())+"] "
                     +FormatUtil.volumeIcon(audioPlayer.getVolume());
         }
-        else return "No music playing \u23F9 " + FormatUtil.volumeIcon(audioPlayer.getVolume());
+        else return "Музыка не играет \u23F9 " + FormatUtil.volumeIcon(audioPlayer.getVolume());
     }
     
     // Audio Send Handler methods
