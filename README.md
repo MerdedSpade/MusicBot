@@ -12,7 +12,7 @@
 
 Музыкальный бот Discord с чистым интерфейсом, который можно легко установить и запустить
 
-**[Добавить Vaxor, Русский музыкальный бот](https://discordapp.com/api/oauth2/authorize?client_id=476770487662280714&permissions=238411073&scope=bot)**
+**[Пригласить Vaxor, Русского музыкального бота](https://discordapp.com/api/oauth2/authorize?client_id=476770487662280714&permissions=238411073&scope=bot)**
 
 ## Преимущеста
   * Легко запустить (просто убедитесь что Java установлена, и запускайте!)
