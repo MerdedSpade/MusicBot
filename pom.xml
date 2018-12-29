@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cf.merdedspade</groupId>
     <artifactId>MusicBotW</artifactId>
-    <version>0.2.2-ru_20181216</version>
+    <version>0.2.2-ru_20181229</version>
     <packaging>jar</packaging>
     
     <repositories>

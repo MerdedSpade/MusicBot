@@ -191,14 +191,14 @@ public class AudioHandler extends AudioEventAdapter implements AudioSendHandler
             Guild guild = guild(jda);
             AudioTrack track = audioPlayer.getPlayingTrack();
             MessageBuilder mb = new MessageBuilder();
-            mb.append(FormatUtil.filter(manager.getBot().getConfig().getSuccess()+" **Now Playing in "+guild.getSelfMember().getVoiceState().getChannel().getName()+"...**"));
+            mb.append(FormatUtil.filter(manager.getBot().getConfig().getSuccess()+" **Сейчас играет в "+guild.getSelfMember().getVoiceState().getChannel().getName()+"...**"));
             EmbedBuilder eb = new EmbedBuilder();
             eb.setColor(guild.getSelfMember().getColor());
             if(getRequester() != 0)
             {
                 User u = guild.getJDA().getUserById(getRequester());
                 if(u==null)
-                    eb.setAuthor("Unknown (ID:"+getRequester()+")", null, null);
+                    eb.setAuthor("Неизвестно (ID:"+getRequester()+")", null, null);
                 else
                     eb.setAuthor(u.getName()+"#"+u.getDiscriminator(), null, u.getEffectiveAvatarUrl());
             }
