@@ -55,7 +55,7 @@ public class SkipCmd extends MusicCommand
                 msg = event.getClient().getWarning()+" Вы уже проголосовали за пропуск песни `[";
             else
             {
-                msg = event.getClient().getSuccess()+" вы проголосовали за пропуск песни `[";
+                msg = event.getClient().getSuccess()+" Вы проголосовали за пропуск песни `[";
                 handler.getVotes().add(event.getAuthor().getId());
             }
             int skippers = (int)event.getSelfMember().getVoiceState().getChannel().getMembers().stream()
