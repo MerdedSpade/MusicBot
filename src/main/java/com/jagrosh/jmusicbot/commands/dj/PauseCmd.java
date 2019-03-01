@@ -44,6 +44,6 @@ public class PauseCmd extends DJCommand
             return;
         }
         handler.getPlayer().setPaused(true);
-        event.replySuccess("Поставлено на паузу **"+handler.getPlayer().getPlayingTrack().getInfo().title+"**. Наберите `"+event.getClient().getPrefix()+"play` to unpause!");
+        event.replySuccess("Поставлено на паузу **"+handler.getPlayer().getPlayingTrack().getInfo().title+"**. Наберите `"+event.getClient().getPrefix()+"play` чтобы возобновить!");
     }
 }
