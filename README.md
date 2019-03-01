@@ -31,7 +31,7 @@
 Пожалуйста посмотрите [Страницу установки](https://github.com/jagrosh/MusicBot/wiki/Setup) в оригинальном вики чтобы запустить его у себя!
 
 
-## Example
+## Пример
 ![Example](https://i.imgur.com/tevrtKt.png)
 
 ## Editing
