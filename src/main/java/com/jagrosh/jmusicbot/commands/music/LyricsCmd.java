@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2018 John Grosh <john.a.grosh@gmail.com>.
  *
@@ -37,7 +38,8 @@ public class LyricsCmd extends MusicCommand
     {
         super(bot);
         this.name = "lyrics";
-        this.help = "показывает титры к песне";
+        this.arguments = "[название песни]";
+        this.help = "показывает текст песни которая сейчас играет";
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.bePlaying = true;
     }
@@ -45,26 +47,48 @@ public class LyricsCmd extends MusicCommand
     @Override
     public void doCommand(CommandEvent event)
     {
-        String title = ((AudioHandler)event.getGuild().getAudioManager().getSendingHandler()).getPlayer().getPlayingTrack().getInfo().title;
-        Lyrics lyrics;
-        try
+        event.getChannel().sendTyping().queue();
+        String title;
+        if(event.getArgs().isEmpty())
+            title = ((AudioHandler)event.getGuild().getAudioManager().getSendingHandler()).getPlayer().getPlayingTrack().getInfo().title;
+        else
+            title = event.getArgs();
+        client.getLyrics(title).thenAccept(lyrics -> 
         {
-            lyrics = client.getLyrics(title).get();
-        }
-        catch(InterruptedException | ExecutionException ex)
-        {
-            lyrics = null;
-        }
-        
-        if(lyrics == null)
-        {
-            event.replyError("Титры для `" + title + "` не могут быть найдены!");
-            return;
-        }
-        
-        event.reply(new EmbedBuilder().setColor(event.getSelfMember().getColor())
-                .setAuthor(lyrics.getAuthor())
-                .setTitle(lyrics.getTitle(), lyrics.getURL())
-                .setDescription(lyrics.getContent()).build());
+            if(lyrics == null)
+            {
+                event.replyError("Текст песни для `" + title + "` не может быть найден!");
+                return;
+            }
+
+            EmbedBuilder eb = new EmbedBuilder()
+                    .setAuthor(lyrics.getAuthor())
+                    .setColor(event.getSelfMember().getColor())
+                    .setTitle(lyrics.getTitle(), lyrics.getURL());
+            if(lyrics.getContent().length()>15000)
+            {
+                event.replyWarning("Текст песни для `" + title + "` найден, но похоже он не верен: " + lyrics.getURL());
+            }
+            else if(lyrics.getContent().length()>2000)
+            {
+                String content = lyrics.getContent().trim();
+                while(content.length() > 2000)
+                {
+                    int index = content.lastIndexOf("\n\n", 2000);
+                    if(index == -1)
+                        index = content.lastIndexOf("\n", 2000);
+                    if(index == -1)
+                        index = content.lastIndexOf(" ", 2000);
+                    if(index == -1)
+                        index = 2000;
+                    event.reply(eb.setDescription(content.substring(0, index).trim()).build());
+                    content = content.substring(index).trim();
+                    eb.setAuthor(null).setTitle(null, null);
+                }
+                event.reply(eb.setDescription(content).build());
+            }
+            else
+                event.reply(eb.setDescription(lyrics.getContent()).build());
+        });
     }
 }
