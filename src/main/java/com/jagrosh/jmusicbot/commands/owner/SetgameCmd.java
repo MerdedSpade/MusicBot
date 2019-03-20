@@ -46,7 +46,7 @@ public class SetgameCmd extends OwnerCommand
         {
             event.getJDA().getPresence().setGame(title.isEmpty() ? null : Game.playing(title));
             event.reply(event.getClient().getSuccess()+" **"+event.getSelfUser().getName()
-                    +"** is "+(title.isEmpty() ? "Не во что больше не играю." : "Сейчас играю в `"+title+"`"));
+                    +"** "+(title.isEmpty() ? "Не во что больше не играю." : "Сейчас играю в `"+title+"`"));
         }
         catch(Exception e)
         {
