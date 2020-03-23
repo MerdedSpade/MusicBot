@@ -25,7 +25,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
         tag_name: ${{ steps.time.outputs.time }}
-        release_name: v0.2.7 - {{ steps.time.outputs.time }}
+        release_name: v0.2.7 - ${{ steps.time.outputs.time }}
         body: Auto-Release from Commit
         draft: true
         prerelease: false  
