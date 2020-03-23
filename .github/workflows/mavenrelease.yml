@@ -27,7 +27,7 @@ jobs:
         tag_name: auto${GITHUB_SHA::8}
         release_name: v0.2.7 - ${{ steps.time.outputs.time }}
         body: Auto-Release from Commit
-        draft: false
+        draft: true
         prerelease: false  
     - name: Upload Release Asset
       id: upload-release-asset 
