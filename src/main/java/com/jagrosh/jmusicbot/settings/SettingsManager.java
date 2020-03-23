@@ -50,13 +50,13 @@ public class SettingsManager implements GuildSettingsManager
                         o.has("prefix")          ? o.getString("prefix")          : null));
             });
         } catch(IOException | JSONException e) {
-            LoggerFactory.getLogger("Settings").warn("Failed to load server settings (this is normal if no settings have been set yet): "+e);
+            LoggerFactory.getLogger("Settings").warn("Не удалось загрузить настройки сервера (это нормально, если они не были ещё не установлены): "+e);
         }
     }
-    
+
     /**
      * Gets non-null settings for a Guild
-     * 
+     *
      * @param guild the guild to get settings for
      * @return the existing settings, or new settings for that guild
      */
@@ -65,17 +65,17 @@ public class SettingsManager implements GuildSettingsManager
     {
         return getSettings(guild.getIdLong());
     }
-    
+
     public Settings getSettings(long guildId)
     {
         return settings.computeIfAbsent(guildId, id -> createDefaultSettings());
     }
-    
+
     private Settings createDefaultSettings()
     {
         return new Settings(this, 0, 0, 0, 100, null, false, null);
     }
-    
+
     protected void writeSettings()
     {
         JSONObject obj = new JSONObject();
@@ -101,7 +101,7 @@ public class SettingsManager implements GuildSettingsManager
         try {
             Files.write(Paths.get("serversettings.json"), obj.toString(4).getBytes());
         } catch(IOException ex){
-            LoggerFactory.getLogger("Settings").warn("Failed to write to file: "+ex);
+            LoggerFactory.getLogger("Settings").warn("Не удалось записать файл: "+ex);
         }
     }
 }

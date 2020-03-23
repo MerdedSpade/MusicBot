@@ -25,7 +25,7 @@ import net.dv8tion.jda.core.entities.VoiceChannel;
  * @author John Grosh <john.a.grosh@gmail.com>
  */
 public class FormatUtil {
-    
+
     public static String formatTime(long duration)
     {
         if(duration == Long.MAX_VALUE)
@@ -37,7 +37,7 @@ public class FormatUtil {
         seconds %= 60;
         return (hours>0 ? hours+":" : "") + (minutes<10 ? "0"+minutes : minutes) + ":" + (seconds<10 ? "0"+seconds : seconds);
     }
-        
+
     public static String progressBar(double percent)
     {
         String str = "";
@@ -48,7 +48,7 @@ public class FormatUtil {
                 str+="▬";
         return str;
     }
-    
+
     public static String volumeIcon(int volume)
     {
         if(volume == 0)
@@ -59,37 +59,37 @@ public class FormatUtil {
             return "\uD83D\uDD09"; // 🔉
         return "\uD83D\uDD0A";     // 🔊
     }
-    
+
     public static String listOfTChannels(List<TextChannel> list, String query)
     {
-        String out = " Multiple text channels found matching \""+query+"\":";
+        String out = " Несколько каналов найдено по запросу \""+query+"\":";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getName()+" (<#"+list.get(i).getId()+">)";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**И ещё "+(list.size()-6)+"...**";
         return out;
     }
-    
+
     public static String listOfVChannels(List<VoiceChannel> list, String query)
     {
-        String out = " Multiple voice channels found matching \""+query+"\":";
+        String out = " Несколько голосовых каналов найдено по запросу \""+query+"\":";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getName()+" (ID:"+list.get(i).getId()+")";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**И ещё "+(list.size()-6)+"...**";
         return out;
     }
-    
+
     public static String listOfRoles(List<Role> list, String query)
     {
-        String out = " Multiple text channels found matching \""+query+"\":";
+        String out = " Несколько каналов найдено по запросу \""+query+"\":";
         for(int i=0; i<6 && i<list.size(); i++)
             out+="\n - "+list.get(i).getName()+" (ID:"+list.get(i).getId()+")";
         if(list.size()>6)
-            out+="\n**And "+(list.size()-6)+" more...**";
+            out+="\n**И ещё "+(list.size()-6)+"...**";
         return out;
     }
-    
+
     public static String filter(String input)
     {
         return input.replace("\u202E","")

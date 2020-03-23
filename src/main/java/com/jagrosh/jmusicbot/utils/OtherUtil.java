@@ -33,11 +33,11 @@ import org.json.JSONTokener;
  */
 public class OtherUtil
 {
-    public final static String NEW_VERSION_AVAILABLE = "There is a new version of JMusicBot available!\n"
-                    + "Current version: %s\n"
-                    + "New Version: %s\n\n"
-                    + "Please visit https://github.com/jagrosh/MusicBot/releases/latest to get the latest release.";
-    
+    public final static String NEW_VERSION_AVAILABLE = "Новая версия MusicBotW доступна!\n"
+                    + "Текущая версия: %s\n"
+                    + "Новая версия: %s\n\n"
+                    + "Пожалуйста посетите https://github.com/MerdedSpade/MusicBotW/releases/latest чтобы получить последнюю версию.";
+
     public static String loadResource(Object clazz, String name)
     {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(clazz.getClass().getResourceAsStream(name))))
@@ -51,12 +51,12 @@ public class OtherUtil
             return null;
         }
     }
-    
+
     public static InputStream imageFromUrl(String url)
     {
         if(url==null)
             return null;
-        try 
+        try
         {
             URL u = new URL(url);
             URLConnection urlConnection = u.openConnection();
@@ -66,7 +66,7 @@ public class OtherUtil
         catch(IOException | IllegalArgumentException ignore) {}
         return null;
     }
-    
+
     public static Game parseGame(String game)
     {
         if(game==null || game.trim().isEmpty() || game.trim().equalsIgnoreCase("default"))
@@ -90,7 +90,7 @@ public class OtherUtil
         }
         return Game.playing(game);
     }
-    
+
     public static OnlineStatus parseStatus(String status)
     {
         if(status==null || status.trim().isEmpty())
@@ -98,24 +98,24 @@ public class OtherUtil
         OnlineStatus st = OnlineStatus.fromKey(status);
         return st == null ? OnlineStatus.ONLINE : st;
     }
-    
+
     public static String checkVersion(Prompt prompt)
     {
         // Get current version number
         String version = getCurrentVersion();
-        
+
         // Check for new version
         String latestVersion = getLatestVersion();
-        
+
         if(latestVersion!=null && !latestVersion.equals(version))
         {
             prompt.alert(Prompt.Level.WARNING, "Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
         }
-        
+
         // Return the current version
         return version;
     }
-    
+
     public static String getCurrentVersion()
     {
         if(JMusicBot.class.getPackage()!=null && JMusicBot.class.getPackage().getImplementationVersion()!=null)
@@ -123,7 +123,7 @@ public class OtherUtil
         else
             return "UNKNOWN";
     }
-    
+
     public static String getLatestVersion()
     {
         try

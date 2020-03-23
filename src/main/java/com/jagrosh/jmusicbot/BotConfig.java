@@ -28,8 +28,8 @@ import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
 /**
- * 
- * 
+ *
+ *
  * @author John Grosh (jagrosh)
  */
 public class BotConfig
@@ -38,7 +38,7 @@ public class BotConfig
     private final static String CONTEXT = "Config";
     private final static String START_TOKEN = "/// START OF JMUSICBOT CONFIG ///";
     private final static String END_TOKEN = "/// END OF JMUSICBOT CONFIG ///";
-    
+
     private Path path = null;
     private String token, prefix, altprefix, helpWord, playlistsFolder,
             successEmoji, warningEmoji, errorEmoji, loadingEmoji, searchingEmoji;
@@ -50,18 +50,18 @@ public class BotConfig
 
 
     private boolean valid = false;
-    
+
     public BotConfig(Prompt prompt)
     {
         this.prompt = prompt;
     }
-    
+
     public void load()
     {
         valid = false;
-        
+
         // read config from file
-        try 
+        try
         {
             // get the path to the config, default config.txt
             path = Paths.get(System.getProperty("config.file", System.getProperty("config", "config.txt")));
@@ -71,11 +71,11 @@ public class BotConfig
                     System.setProperty("config.file", System.getProperty("config", "config.txt"));
                 ConfigFactory.invalidateCaches();
             }
-            
+
             // load in the config file, plus the default values
             //Config config = ConfigFactory.parseFile(path.toFile()).withFallback(ConfigFactory.load());
             Config config = ConfigFactory.load();
-            
+
             // set values
             token = config.getString("token");
             prefix = config.getString("prefix");
@@ -98,20 +98,20 @@ public class BotConfig
             playlistsFolder = config.getString("playlistsfolder");
             aliases = config.getConfig("aliases");
             dbots = owner == 113156185389092864L;
-            
+
             // we may need to write a new config file
             boolean write = false;
 
             // validate bot token
             if(token==null || token.isEmpty() || token.equalsIgnoreCase("BOT_TOKEN_HERE"))
             {
-                token = prompt.prompt("Please provide a bot token."
-                        + "\nInstructions for obtaining a token can be found here:"
+                token = prompt.prompt("Пожалуйста предоставьте токен бота."
+                        + "\nИнструкции по его получению можно найти здесь:"
                         + "\nhttps://github.com/jagrosh/MusicBot/wiki/Getting-a-Bot-Token."
-                        + "\nBot Token: ");
+                        + "\nТокен бота: ");
                 if(token==null)
                 {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "No token provided! Exiting.\n\nConfig Location: " + path.toAbsolutePath().toString());
+                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Токен не предоставлен! Выхожу.\n\nРасположение файла конфигурации: " + path.toAbsolutePath().toString());
                     return;
                 }
                 else
@@ -119,17 +119,17 @@ public class BotConfig
                     write = true;
                 }
             }
-            
+
             // validate bot owner
             if(owner<=0)
             {
                 try
                 {
-                    owner = Long.parseLong(prompt.prompt("Owner ID was missing, or the provided owner ID is not valid."
-                        + "\nPlease provide the User ID of the bot's owner."
-                        + "\nInstructions for obtaining your User ID can be found here:"
+                    owner = Long.parseLong(prompt.prompt("Требуется ID владельца, или предоставленный ID владельца не верен."
+                        + "\nПожалуйста предоставьте ID пользователя владельца бота."
+                        + "\nИнструкции по его получению можно найти здесь:"
                         + "\nhttps://github.com/jagrosh/MusicBot/wiki/Finding-Your-User-ID"
-                        + "\nOwner User ID: "));
+                        + "\nID пользователя владельца: "));
                 }
                 catch(NumberFormatException | NullPointerException ex)
                 {
@@ -137,7 +137,7 @@ public class BotConfig
                 }
                 if(owner<=0)
                 {
-                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "Invalid User ID! Exiting.\n\nConfig Location: " + path.toAbsolutePath().toString());
+                    prompt.alert(Prompt.Level.ERROR, CONTEXT, "Неверный ID пользователя! Выхожу.\n\nРасположение конфигурации: " + path.toAbsolutePath().toString());
                     System.exit(0);
                 }
                 else
@@ -145,7 +145,7 @@ public class BotConfig
                     write = true;
                 }
             }
-            
+
             if(write)
             {
                 String original = OtherUtil.loadResource(this, "/reference.conf");
@@ -161,142 +161,142 @@ public class BotConfig
                         .replace("0 // OWNER ID", Long.toString(owner))
                         .trim().getBytes();
                 }
-                try 
+                try
                 {
                     Files.write(path, bytes);
                 }
-                catch(IOException ex) 
+                catch(IOException ex)
                 {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Failed to write new config options to config.txt: "+ex
-                        + "\nPlease make sure that the files are not on your desktop or some other restricted area.\n\nConfig Location: " 
+                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Не удалось записать нвоый опции конфигурации в config.txt: "+ex
+                        + "\nУбедитесь что эти файлы не на вашем рабочем столе или в другом защищённой зоне.\n\nРасположение конфигурации: "
                         + path.toAbsolutePath().toString());
                 }
             }
-            
+
             // if we get through the whole config, it's good to go
             valid = true;
         }
         catch (ConfigException ex)
         {
-            prompt.alert(Prompt.Level.ERROR, CONTEXT, ex + ": " + ex.getMessage() + "\n\nConfig Location: " + path.toAbsolutePath().toString());
+            prompt.alert(Prompt.Level.ERROR, CONTEXT, ex + ": " + ex.getMessage() + "\n\nРасположение конфигурации: " + path.toAbsolutePath().toString());
         }
     }
-    
+
     public boolean isValid()
     {
         return valid;
     }
-    
+
     public String getConfigLocation()
     {
         return path.toFile().getAbsolutePath();
     }
-    
+
     public String getPrefix()
     {
         return prefix;
     }
-    
+
     public String getAltPrefix()
     {
         return "NONE".equalsIgnoreCase(altprefix) ? null : altprefix;
     }
-    
+
     public String getToken()
     {
         return token;
     }
-    
+
     public long getOwnerId()
     {
         return owner;
     }
-    
+
     public String getSuccess()
     {
         return successEmoji;
     }
-    
+
     public String getWarning()
     {
         return warningEmoji;
     }
-    
+
     public String getError()
     {
         return errorEmoji;
     }
-    
+
     public String getLoading()
     {
         return loadingEmoji;
     }
-    
+
     public String getSearching()
     {
         return searchingEmoji;
     }
-    
+
     public Game getGame()
     {
         return game;
     }
-    
+
     public OnlineStatus getStatus()
     {
         return status;
     }
-    
+
     public String getHelp()
     {
         return helpWord;
     }
-    
+
     public boolean getStay()
     {
         return stayInChannel;
     }
-    
+
     public boolean getSongInStatus()
     {
         return songInGame;
     }
-    
+
     public String getPlaylistsFolder()
     {
         return playlistsFolder;
     }
-    
+
     public boolean getDBots()
     {
         return dbots;
     }
-    
+
     public boolean useUpdateAlerts()
     {
         return updatealerts;
     }
-    
+
     public boolean useEval()
     {
         return useEval;
     }
-    
+
     public boolean useNPImages()
     {
         return npImages;
     }
-    
+
     public long getMaxSeconds()
     {
         return maxSeconds;
     }
-    
+
     public String getMaxTime()
     {
         return FormatUtil.formatTime(maxSeconds * 1000);
     }
-    
+
     public boolean isTooLong(AudioTrack track)
     {
         if(maxSeconds<=0)

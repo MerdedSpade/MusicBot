@@ -49,13 +49,13 @@ public class DebugCmd extends OwnerCommand
     protected void execute(CommandEvent event)
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("```\nSystem Properties:");
+        sb.append("```\nПараметры системы:");
         for(String key: PROPERTIES)
             sb.append("\n  ").append(key).append(" = ").append(System.getProperty(key));
-        sb.append("\n\nJMusicBot Information:")
-                .append("\n  Version = ").append(OtherUtil.getCurrentVersion())
-                .append("\n  Owner = ").append(bot.getConfig().getOwnerId())
-                .append("\n  Prefix = ").append(bot.getConfig().getPrefix())
+        sb.append("\n\nMusicBotW Информация:")
+                .append("\n  Версия = ").append(OtherUtil.getCurrentVersion())
+                .append("\n  Владелец = ").append(bot.getConfig().getOwnerId())
+                .append("\n  Префикс = ").append(bot.getConfig().getPrefix())
                 .append("\n  AltPrefix = ").append(bot.getConfig().getAltPrefix())
                 .append("\n  MaxSeconds = ").append(bot.getConfig().getMaxSeconds())
                 .append("\n  NPImages = ").append(bot.getConfig().useNPImages())
@@ -63,16 +63,16 @@ public class DebugCmd extends OwnerCommand
                 .append("\n  StayInChannel = ").append(bot.getConfig().getStay())
                 .append("\n  UseEval = ").append(bot.getConfig().useEval())
                 .append("\n  UpdateAlerts = ").append(bot.getConfig().useUpdateAlerts());
-        sb.append("\n\nDependency Information:")
-                .append("\n  JDA Version = ").append(JDAInfo.VERSION)
-                .append("\n  JDA-Utilities Version = ").append(JDAUtilitiesInfo.VERSION)
-                .append("\n  Lavaplayer Version = ").append(PlayerLibrary.VERSION);
+        sb.append("\n\nИнформация о зависимостях:")
+                .append("\n  JDAVersion = ").append(JDAInfo.VERSION)
+                .append("\n  JDA-UtilitiesVersion = ").append(JDAUtilitiesInfo.VERSION)
+                .append("\n  LavaplayerVersion = ").append(PlayerLibrary.VERSION);
         long total = Runtime.getRuntime().totalMemory() / 1024 / 1024;
         long used = total - (Runtime.getRuntime().freeMemory() / 1024 / 1024);
-        sb.append("\n\nRuntime Information:")
-                .append("\n  Total Memory = ").append(total)
-                .append("\n  Used Memory = ").append(used);
-        sb.append("\n\nDiscord Information:")
+        sb.append("\n\nИнформация о выполнении:")
+                .append("\n  TotalMemory = ").append(total)
+                .append("\n  UsedMemory = ").append(used);
+        sb.append("\n\nDiscord Информация:")
                 .append("\n  ID = ").append(event.getJDA().getSelfUser().getId())
                 .append("\n  Guilds = ").append(event.getJDA().getGuildCache().size())
                 .append("\n  Users = ").append(event.getJDA().getUserCache().size());

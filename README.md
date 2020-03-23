@@ -1,41 +1,38 @@
-<img align="right" src="https://i.imgur.com/zrE80HY.png" height="200" width="200">
+<img align="center" src="https://i.imgur.com/tUW751B.png" height="200" width="200">
 
-# JMusicBot
+<p align="center"><h1>MusicBotW</h1></p>
 
-[![Downloads](https://img.shields.io/github/downloads/jagrosh/MusicBot/total.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![Stars](https://img.shields.io/github/stars/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/stargazers)
-[![Release](https://img.shields.io/github/release/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/releases/latest)
-[![License](https://img.shields.io/github/license/jagrosh/MusicBot.svg)](https://github.com/jagrosh/MusicBot/blob/master/LICENSE)
-[![Discord](https://discordapp.com/api/guilds/147698382092238848/widget.png)](https://discord.gg/0p9LSGoRLu6Pet0k)<br>
-[![CircleCI](https://img.shields.io/circleci/project/github/jagrosh/MusicBot/master.svg)](https://circleci.com/gh/jagrosh/MusicBot)
+[![Downloads](https://img.shields.io/github/downloads/MerdedSpade/MusicBotW/total.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
+[![Stars](https://img.shields.io/github/stars/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/stargazers)
+[![Release](https://img.shields.io/github/release/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
+[![License](https://img.shields.io/github/license/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/blob/master/LICENSE)
+[![CircleCI](https://img.shields.io/circleci/project/github/MerdedSpade/MusicBotW/master.svg)](https://circleci.com/gh/MerdedSpade/MusicBotW)
+[![Travis-CI](https://travis-ci.com/MerdedSpade/MusicBotW.svg?branch=master)](https://travis-ci.com/MerdedSpade/MusicBotW)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/gdu6nyte5psj6xfk/branch/master?svg=true)](https://ci.appveyor.com/project/jagrosh/musicbot/branch/master)
-[![CodeFactor](https://www.codefactor.io/repository/github/jagrosh/musicbot/badge)](https://www.codefactor.io/repository/github/jagrosh/musicbot)
 
-A cross-platform Discord music bot with a clean interface, and that is easy to set up and run yourself!
+Музыкальный бот Discord с чистым интерфейсом, который можно легко установить и запустить
 
-[![Setup](http://i.imgur.com/VvXYp5j.png)](https://github.com/jagrosh/MusicBot/wiki/Setup)
+**[Пригласить Vaxor, Русского музыкального бота](https://discordapp.com/api/oauth2/authorize?client_id=476770487662280714&permissions=238411073&scope=bot)**
 
-## Features
-  * Easy to run (just make sure Java is installed, and run!)
-  * Fast loading of songs
-  * No external keys needed (besides a Discord Bot token)
-  * Smooth playback
-  * Server-specific setup for the "DJ" role that can moderate the music
-  * Clean and beautiful menus
-  * Channel-topic playback bar
-  * Supports many sites, including Youtube, Soundcloud, and more
-  * Supports many online radio/streams
-  * Supports local files
-  * Playlist support (both web/youtube, and local)
+## Преимущеста
+  * Легко запустить (просто убедитесь что Java установлена, и запускайте!)
+  * Быстрая загрузка песен
+  * Не нужно сторонних ключей (кроме токена Discord бота)
+  * Плавное воспроизведение
+  * Роль "DJ" для каждого сервера, которая может управлять музыкой
+  * Чистые и прекрасные меню
+  * Статус воспроизведения в теме канала!
+  * Поддерживает много сайтов, включая Youtube, Soundcloud, и другие
+  * Поддерживает много сетевых радио/трансляций
+  * Поддерживает локальные файлы
+  * Поддержка плейлистов (с web/youtube, и локальные)
+  * Добавлена поддержка Docker
+## Установка
+Пожалуйста посмотрите [Страницу установки](https://github.com/jagrosh/MusicBot/wiki/Setup) в оригинальном вики чтобы запустить его у себя!
 
-## Example
-![Loading Example...](https://i.imgur.com/kVtTKvS.gif)
 
-## Setup
-Please see the [Setup Page](https://github.com/jagrosh/MusicBot/wiki/Setup) in the wiki to run this bot yourself!
-
-## Questions/Suggestions/Bug Reports
-**Please read the [Suggested/Planned Features List](https://github.com/jagrosh/MusicBot/projects/1) before suggesting a feature**. If you'd like to suggest changes to how the bot functions, recommend more customization options, or report bugs, feel free to either open an [Issue](https://github.com/jagrosh/MusicBot/issues) on this repository, or join [my Discord server](https://discord.gg/0p9LSGoRLu6Pet0k). (Note: I will not accept any feature requests that will require additional API keys, nor any non-music features). If you like this bot, be sure to add a star to the libraries that make this possible: [**JDA**](https://github.com/DV8FromTheWorld/JDA) and [**lavaplayer**](https://github.com/sedmelluq/lavaplayer)
+## Пример
+![Example](https://i.imgur.com/tevrtKt.png)
 
 ## Editing
-This bot (and the source code here) might not be easy to edit for inexperienced programmers. The main purpose of having the source public is to show the capabilities of the libraries, to allow others to understand how the bot works, and to allow those knowledgeable about java, JDA, and Discord bot development to contribute. There are many requirements and dependencies required to edit and compile it, and there will not be support provided for people looking to make changes on their own. Instead, consider making a feature request (see the above section). If you choose to make edits, please do so in accordance with the Apache 2.0 License.
+This bot (and the source code here) is not meant to be edited. The main purpose of having the source public is to show the capabilities of the libraries, and to allow others to understand how the bot works. There are many requirements and dependencies required to edit and compile it, and there will not be support provided for people looking to make changes on their own. Instead, consider making a feature request (see the above section). If you still choose to make edits, please do so in accordance with the Apache 2.0 License.
