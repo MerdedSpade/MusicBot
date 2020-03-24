@@ -28,9 +28,8 @@ jobs:
       id: create_release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        COMMIT_SHA: ${GITHUB_SHA::8}
       with:
-        tag_name: auto-${{ env.COMMIT_SHA}} 
+        tag_name: auto-${{ github.sha::8 }}
         release_name: v0.2.7 - ${{ steps.time.outputs.time }}
         body: |
           Автоматический релиз из коммита
