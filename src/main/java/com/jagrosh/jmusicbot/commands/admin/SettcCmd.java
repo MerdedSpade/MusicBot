@@ -43,7 +43,7 @@ public class SettcCmd extends AdminCommand
     {
         if(event.getArgs().isEmpty())
         {
-            event.reply(event.getClient().getError()+" Please include a text channel or NONE");
+            event.reply(event.getClient().getError()+" Укажите текстовый канал или NONE");
             return;
         }
         Settings s = event.getClient().getSettingsFor(event.getGuild());
