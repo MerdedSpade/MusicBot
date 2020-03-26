@@ -14,6 +14,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Fix update notify
+      uses: jacobtomlinson/gha-find-replace@master
+      with: 
+        find: "0.2.7-actions"
+        replace: "auto-${{ github.sha }}" 
+        include: "pom.xml"
     - name: Build with Maven
       run: mvn package --file pom.xml
     - name: Get time
