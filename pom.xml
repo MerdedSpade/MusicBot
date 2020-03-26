@@ -83,8 +83,8 @@
                         <goal>shade</goal>
                     </goals>
                     <configuration>
+                        <finalName>MusicBotW</finalName>
                         <shadedArtifactAttached>true</shadedArtifactAttached>
-                        <shadedClassifierName>All</shadedClassifierName>
                         <artifactSet>
                             <includes>
                                 <include>*:*</include>
