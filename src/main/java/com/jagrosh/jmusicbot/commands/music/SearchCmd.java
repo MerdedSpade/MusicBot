@@ -133,7 +133,7 @@ public class SearchCmd extends MusicCommand
         @Override
         public void noMatches() 
         {
-            m.editMessage(FormatUtil.filter(event.getClient().getWarning()+" Не найдено резульатов для `"+event.getArgs()+"`.")).queue();
+            m.editMessage(FormatUtil.filter(event.getClient().getWarning()+" Не найдено резульатов для ` "+event.getArgs()+"`.")).queue();
         }
 
         @Override
