@@ -17,7 +17,7 @@ jobs:
     - name: Fix update notify
       uses: jacobtomlinson/gha-find-replace@master
       with: 
-        find: "0.2.7-actions"
+        find: "0.2.8-actions"
         replace: "auto-${{ github.sha }}" 
         include: "pom.xml"
     - name: Build with Maven
