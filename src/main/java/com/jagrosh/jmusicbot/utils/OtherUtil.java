@@ -39,7 +39,7 @@ public class OtherUtil
     public final static String NEW_VERSION_AVAILABLE = "Новая версия MusicBotW доступна!\n"
                     + "Текущая версия: %s\n"
                     + "Новая версия: %s\n\n"
-                    + "Пожалуйста посетите https://github.com/MerdedSpade/MusicBotW/releases/latest чтобы получить последнюю версию.";
+                    + "Посетите https://github.com/MerdedSpade/MusicBotW/releases/latest чтобы получить последний релиз.";
     private final static String WINDOWS_INVALID_PATH = "c:\\windows\\system32\\";
     
     /**
@@ -85,9 +85,6 @@ public class OtherUtil
             return null;
         }
     }
-<<<<<<< HEAD
-
-=======
     
     /**
      * Loads image data from a URL
@@ -95,12 +92,11 @@ public class OtherUtil
      * @param url url of image
      * @return inputstream of url
      */
->>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
     public static InputStream imageFromUrl(String url)
     {
         if(url==null)
             return null;
-        try
+        try 
         {
             URL u = new URL(url);
             URLConnection urlConnection = u.openConnection();
@@ -110,9 +106,6 @@ public class OtherUtil
         catch(IOException | IllegalArgumentException ignore) {}
         return null;
     }
-<<<<<<< HEAD
-
-=======
     
     /**
      * Parses an activity from a string
@@ -120,7 +113,6 @@ public class OtherUtil
      * @param game the game, including the action such as 'playing' or 'watching'
      * @return the parsed activity
      */
->>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
     public static Game parseGame(String game)
     {
         if(game==null || game.trim().isEmpty() || game.trim().equalsIgnoreCase("default"))
@@ -144,16 +136,12 @@ public class OtherUtil
         }
         return Game.playing(game);
     }
-<<<<<<< HEAD
-
-=======
    
     public static String makeNonEmpty(String str)
     {
         return str == null || str.isEmpty() ? "\u200B" : str;
     }
     
->>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
     public static OnlineStatus parseStatus(String status)
     {
         if(status==null || status.trim().isEmpty())
@@ -161,24 +149,24 @@ public class OtherUtil
         OnlineStatus st = OnlineStatus.fromKey(status);
         return st == null ? OnlineStatus.ONLINE : st;
     }
-
+    
     public static String checkVersion(Prompt prompt)
     {
         // Get current version number
         String version = getCurrentVersion();
-
+        
         // Check for new version
         String latestVersion = getLatestVersion();
-
+        
         if(latestVersion!=null && !latestVersion.equals(version))
         {
             prompt.alert(Prompt.Level.WARNING, "Version", String.format(NEW_VERSION_AVAILABLE, version, latestVersion));
         }
-
+        
         // Return the current version
         return version;
     }
-
+    
     public static String getCurrentVersion()
     {
         if(JMusicBot.class.getPackage()!=null && JMusicBot.class.getPackage().getImplementationVersion()!=null)
@@ -186,7 +174,7 @@ public class OtherUtil
         else
             return "UNKNOWN";
     }
-
+    
     public static String getLatestVersion()
     {
         try
