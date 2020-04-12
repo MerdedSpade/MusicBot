@@ -16,6 +16,7 @@
 package com.jagrosh.jmusicbot.playlist;
 
 import com.jagrosh.jmusicbot.BotConfig;
+import com.jagrosh.jmusicbot.utils.OtherUtil;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
@@ -24,7 +25,6 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -61,29 +61,30 @@ public class PlaylistLoader
     {
         try
         {
-            Files.createDirectory(Paths.get(config.getPlaylistsFolder()));
-        }
+            Files.createDirectory(OtherUtil.getPath(config.getPlaylistsFolder()));
+        } 
+>>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
         catch (IOException ignore) {}
     }
 
     public boolean folderExists()
     {
-        return Files.exists(Paths.get(config.getPlaylistsFolder()));
+        return Files.exists(OtherUtil.getPath(config.getPlaylistsFolder()));
     }
 
     public void createPlaylist(String name) throws IOException
     {
-        Files.createFile(Paths.get(config.getPlaylistsFolder()+File.separator+name+".txt"));
+        Files.createFile(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"));
     }
 
     public void deletePlaylist(String name) throws IOException
     {
-        Files.delete(Paths.get(config.getPlaylistsFolder()+File.separator+name+".txt"));
+        Files.delete(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"));
     }
 
     public void writePlaylist(String name, String text) throws IOException
     {
-        Files.write(Paths.get(config.getPlaylistsFolder()+File.separator+name+".txt"), text.trim().getBytes());
+        Files.write(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"), text.trim().getBytes());
     }
 
     public Playlist getPlaylist(String name)
@@ -96,7 +97,11 @@ public class PlaylistLoader
             {
                 boolean[] shuffle = {false};
                 List<String> list = new ArrayList<>();
+<<<<<<< HEAD
                 Files.readAllLines(Paths.get(config.getPlaylistsFolder()+File.separator+name+".txt")).forEach(str ->
+=======
+                Files.readAllLines(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt")).forEach(str -> 
+>>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
                 {
                     String s = str.trim();
                     if(s.isEmpty())

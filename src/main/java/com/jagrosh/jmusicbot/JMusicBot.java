@@ -166,9 +166,9 @@ public class JMusicBot
                         + "пожалуйста запустите в режиме без графического интерфейса используя флаг -Dnogui=true.");
             }
         }
-
-        log.info("Loaded config from "+config.getConfigLocation());
-
+        
+        log.info("Загружена конфигурация из " + config.getConfigLocation());
+        
         // attempt to log in and start
         try
         {
