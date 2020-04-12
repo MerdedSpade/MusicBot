@@ -36,12 +36,12 @@ import java.util.stream.Collectors;
 public class PlaylistLoader
 {
     private final BotConfig config;
-
+    
     public PlaylistLoader(BotConfig config)
     {
         this.config = config;
     }
-
+    
     public List<String> getPlaylistNames()
     {
         if(folderExists())
@@ -56,37 +56,36 @@ public class PlaylistLoader
             return Collections.EMPTY_LIST;
         }
     }
-
+    
     public void createFolder()
     {
         try
         {
             Files.createDirectory(OtherUtil.getPath(config.getPlaylistsFolder()));
         } 
->>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
         catch (IOException ignore) {}
     }
-
+    
     public boolean folderExists()
     {
         return Files.exists(OtherUtil.getPath(config.getPlaylistsFolder()));
     }
-
+    
     public void createPlaylist(String name) throws IOException
     {
         Files.createFile(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"));
     }
-
+    
     public void deletePlaylist(String name) throws IOException
     {
         Files.delete(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"));
     }
-
+    
     public void writePlaylist(String name, String text) throws IOException
     {
         Files.write(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt"), text.trim().getBytes());
     }
-
+    
     public Playlist getPlaylist(String name)
     {
         if(!getPlaylistNames().contains(name))
@@ -97,11 +96,7 @@ public class PlaylistLoader
             {
                 boolean[] shuffle = {false};
                 List<String> list = new ArrayList<>();
-<<<<<<< HEAD
-                Files.readAllLines(Paths.get(config.getPlaylistsFolder()+File.separator+name+".txt")).forEach(str ->
-=======
                 Files.readAllLines(OtherUtil.getPath(config.getPlaylistsFolder()+File.separator+name+".txt")).forEach(str -> 
->>>>>>> f1e301b48e8a0d79ed9d24ecfae7335a5bbb8dcd
                 {
                     String s = str.trim();
                     if(s.isEmpty())
@@ -130,8 +125,8 @@ public class PlaylistLoader
             return null;
         }
     }
-
-
+    
+    
     private static <T> void shuffle(List<T> list)
     {
         for(int first =0; first<list.size(); first++)
@@ -142,8 +137,8 @@ public class PlaylistLoader
             list.set(second, tmp);
         }
     }
-
-
+    
+    
     public class Playlist
     {
         private final String name;
@@ -152,14 +147,14 @@ public class PlaylistLoader
         private final List<AudioTrack> tracks = new LinkedList<>();
         private final List<PlaylistLoadError> errors = new LinkedList<>();
         private boolean loaded = false;
-
+        
         private Playlist(String name, List<String> items, boolean shuffle)
         {
             this.name = name;
             this.items = items;
             this.shuffle = shuffle;
         }
-
+        
         public void loadTracks(AudioPlayerManager manager, Consumer<AudioTrack> consumer, Runnable callback)
         {
             if(loaded)
@@ -169,7 +164,7 @@ public class PlaylistLoader
             {
                 boolean last = i+1 == items.size();
                 int index = i;
-                manager.loadItemOrdered(name, items.get(i), new AudioLoadResultHandler()
+                manager.loadItemOrdered(name, items.get(i), new AudioLoadResultHandler() 
                 {
                     private void done()
                     {
@@ -183,10 +178,10 @@ public class PlaylistLoader
                     }
 
                     @Override
-                    public void trackLoaded(AudioTrack at)
+                    public void trackLoaded(AudioTrack at) 
                     {
                         if(config.isTooLong(at))
-                            errors.add(new PlaylistLoadError(index, items.get(index), "Этот трек не может быть больше разрешнного максимума"));
+                            errors.add(new PlaylistLoadError(index, items.get(index), "Эта песня длиннее разрешённого максимума"));
                         else
                         {
                             at.setUserData(0L);
@@ -197,7 +192,7 @@ public class PlaylistLoader
                     }
 
                     @Override
-                    public void playlistLoaded(AudioPlaylist ap)
+                    public void playlistLoaded(AudioPlaylist ap) 
                     {
                         if(ap.isSearchResult())
                         {
@@ -227,27 +222,27 @@ public class PlaylistLoader
                     }
 
                     @Override
-                    public void noMatches()
+                    public void noMatches() 
                     {
-                        errors.add(new PlaylistLoadError(index, items.get(index), "No matches found."));
+                        errors.add(new PlaylistLoadError(index, items.get(index), "Совпадений не найдено."));
                         done();
                     }
 
                     @Override
-                    public void loadFailed(FriendlyException fe)
+                    public void loadFailed(FriendlyException fe) 
                     {
-                        errors.add(new PlaylistLoadError(index, items.get(index), "Failed to load track: "+fe.getLocalizedMessage()));
+                        errors.add(new PlaylistLoadError(index, items.get(index), "Ошибка загрузки песни: "+fe.getLocalizedMessage()));
                         done();
                     }
                 });
             }
         }
-
+        
         public void shuffleTracks()
         {
             shuffle(tracks);
         }
-
+        
         public String getName()
         {
             return name;
@@ -262,36 +257,36 @@ public class PlaylistLoader
         {
             return tracks;
         }
-
+        
         public List<PlaylistLoadError> getErrors()
         {
             return errors;
         }
     }
-
+    
     public class PlaylistLoadError
     {
         private final int number;
         private final String item;
         private final String reason;
-
+        
         private PlaylistLoadError(int number, String item, String reason)
         {
             this.number = number;
             this.item = item;
             this.reason = reason;
         }
-
+        
         public int getIndex()
         {
             return number;
         }
-
+        
         public String getItem()
         {
             return item;
         }
-
+        
         public String getReason()
         {
             return reason;
