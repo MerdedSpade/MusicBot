@@ -1,8 +1,8 @@
 kind: pipeline
-name: default
+name: deploy
 
 steps:
-- name: pre
+- name: prepare
   image: ubuntu
   environment:
     CONFIG:
