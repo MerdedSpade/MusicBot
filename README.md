@@ -3,6 +3,7 @@
 <p align="center"><h1>MusicBotW</h1></p>
 
 [![Downloads](https://img.shields.io/github/downloads/MerdedSpade/MusicBotW/total.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
+![Discord](https://img.shields.io/discord/704316196547461223?label=discord&style=flat-square)
 [![Stars](https://img.shields.io/github/stars/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/stargazers)
 [![Release](https://img.shields.io/github/release/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
 [![License](https://img.shields.io/github/license/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/blob/master/LICENSE)
