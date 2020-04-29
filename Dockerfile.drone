@@ -1,0 +1,7 @@
+FROM alpine
+WORKDIR /home/app
+RUN apk add git openjdk8 maven
+ADD . /home/app
+RUN mvn package
+
+CMD ["java", "-jar", "target/MusicBotW.jar"]

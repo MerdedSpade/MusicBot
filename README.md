@@ -6,6 +6,7 @@
 [![Stars](https://img.shields.io/github/stars/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/stargazers)
 [![Release](https://img.shields.io/github/release/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/releases/latest)
 [![License](https://img.shields.io/github/license/MerdedSpade/MusicBotW.svg)](https://github.com/MerdedSpade/MusicBotW/blob/master/LICENSE)
+[![Build Status](http://drone.merded.fun/api/badges/Merded/MusicBotW/status.svg)](http://drone.merded.fun/Merded/MusicBotW)
 ![MusicBot](https://github.com/MerdedSpade/MusicBotW/workflows/MusicBot/badge.svg)
 
 Музыкальный бот Discord с чистым интерфейсом, который можно легко установить и запустить

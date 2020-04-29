@@ -1,0 +1,31 @@
+kind: pipeline
+name: default
+
+steps:
+- name: pre
+  image: ubuntu
+  environment:
+    CONFIG:
+      from_secret: config
+  commands:
+    - apt update
+    - apt install git -y
+    - touch config.txt
+    - echo $CONFIG > config.txt
+    - git clone https://github.com/MerdedSpade/MusicBotW checktag --bare
+    - cd checktag 
+    - sed -i "s/0.2.8-actions/$(git describe --tags)/g" ../pom.xml
+
+- name: build_image  
+  image: plugins/docker
+  environment:
+  settings:
+    username: 
+      from_secret: username
+    password: 
+      from_secret: password
+    repo: 
+      from_secret: repo
+    registry: 
+      from_secret: registry
+    dockerfile: Dockerfile.drone
