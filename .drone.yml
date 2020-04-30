@@ -2,6 +2,13 @@ kind: pipeline
 name: deploy
 
 steps:
+- name: wait_github_actions
+  image: ubuntu
+  environment:
+    CONFIG:
+      from_secret: config
+  commands:
+    - sleep 3m
 - name: prepare
   image: ubuntu
   environment:
