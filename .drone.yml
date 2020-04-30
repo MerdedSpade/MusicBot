@@ -3,9 +3,10 @@ name: deploy
 
 steps:
 - name: wait_github_actions
-  image: ubuntu
+  image: alpine/git
   commands:
     - sleep 3m
+    - git fetch
 - name: prepare
   image: ubuntu
   environment:
