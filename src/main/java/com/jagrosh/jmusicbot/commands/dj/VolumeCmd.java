@@ -55,8 +55,8 @@ public class VolumeCmd extends DJCommand
             }catch(NumberFormatException e){
                 nvolume = -1;
             }
-            if(nvolume<0 || nvolume>150)
-                event.reply(event.getClient().getError()+" Громкость должна быть верным числом между 0 и 150!");
+            if(nvolume<0 || nvolume>100)
+                event.reply(event.getClient().getError()+" Громкость должна быть верным числом между 0 и 100!");
             else
             {
                 handler.getPlayer().setVolume(nvolume);
