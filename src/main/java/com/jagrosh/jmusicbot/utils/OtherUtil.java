@@ -39,7 +39,7 @@ public class OtherUtil
     public final static String NEW_VERSION_AVAILABLE = "Новая версия MusicBotW доступна!\n"
                     + "Текущая версия: %s\n"
                     + "Новая версия: %s\n\n"
-                    + "Посетите https://github.com/MerdedSpade/MusicBotW/releases/latest чтобы получить последний релиз.";
+                    + "Посетите https://github.com/Merded/MusicBotW/releases/latest чтобы получить последний релиз.";
     private final static String WINDOWS_INVALID_PATH = "c:\\windows\\system32\\";
     
     /**
@@ -180,7 +180,7 @@ public class OtherUtil
         try
         {
             Response response = new OkHttpClient.Builder().build()
-                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/MerdedSpade/MusicBotW/releases/latest").build())
+                    .newCall(new Request.Builder().get().url("https://api.github.com/repos/Merded/MusicBotW/releases/latest").build())
                     .execute();
             ResponseBody body = response.body();
             if(body != null)
