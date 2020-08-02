@@ -23,7 +23,6 @@ import com.typesafe.config.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import net.dv8tion.jda.core.OnlineStatus;
 import net.dv8tion.jda.core.entities.Game;
 
@@ -138,7 +137,7 @@ public class BotConfig
                 if(owner<=0)
                 {
                     prompt.alert(Prompt.Level.ERROR, CONTEXT, "Неверный ID пользователя! Выхожу.\n\nРасположение конфигурации: " + path.toAbsolutePath().toString());
-                    System.exit(0);
+                    return;
                 }
                 else
                 {
@@ -147,32 +146,8 @@ public class BotConfig
             }
 
             if(write)
-            {
-                String original = OtherUtil.loadResource(this, "/reference.conf");
-                byte[] bytes;
-                if(original==null)
-                {
-                    bytes = ("token = "+token+"\r\nowner = "+owner).getBytes();
-                }
-                else
-                {
-                    bytes = original.substring(original.indexOf(START_TOKEN)+START_TOKEN.length(), original.indexOf(END_TOKEN))
-                        .replace("BOT_TOKEN_HERE", token)
-                        .replace("0 // OWNER ID", Long.toString(owner))
-                        .trim().getBytes();
-                }
-                try
-                {
-                    Files.write(path, bytes);
-                }
-                catch(IOException ex)
-                {
-                    prompt.alert(Prompt.Level.WARNING, CONTEXT, "Не удалось записать нвоый опции конфигурации в config.txt: "+ex
-                        + "\nУбедитесь что эти файлы не на вашем рабочем столе или в другом защищённой зоне.\n\nРасположение конфигурации: "
-                        + path.toAbsolutePath().toString());
-                }
-            }
-
+                writeToFile();
+            
             // if we get through the whole config, it's good to go
             valid = true;
         }
@@ -181,7 +156,34 @@ public class BotConfig
             prompt.alert(Prompt.Level.ERROR, CONTEXT, ex + ": " + ex.getMessage() + "\n\nРасположение конфигурации: " + path.toAbsolutePath().toString());
         }
     }
-
+    
+    private void writeToFile()
+    {
+        String original = OtherUtil.loadResource(this, "/reference.conf");
+        byte[] bytes;
+        if(original==null)
+        {
+            bytes = ("token = "+token+"\r\nowner = "+owner).getBytes();
+        }
+        else
+        {
+            bytes = original.substring(original.indexOf(START_TOKEN)+START_TOKEN.length(), original.indexOf(END_TOKEN))
+                .replace("BOT_TOKEN_HERE", token)
+                .replace("0 // OWNER ID", Long.toString(owner))
+                .trim().getBytes();
+        }
+        try 
+        {
+            Files.write(path, bytes);
+        }
+        catch(IOException ex) 
+        {
+            prompt.alert(Prompt.Level.WARNING, CONTEXT, "Ошибка записи новых опций в config.txt: "+ex
+                + "\nУбедитесь что ваши файлы не на рабочем столе или на другой защищённой области.\n\nРасположение конфигурации: " 
+                + path.toAbsolutePath().toString());
+        }
+    }
+    
     public boolean isValid()
     {
         return valid;

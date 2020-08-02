@@ -57,16 +57,7 @@ public class JMusicBot
         // create prompt to handle startup
         Prompt prompt = new Prompt("MusicBotW", "Переключение на режим без графического интерфейса. Вы можете вручную запустить режим без графического интерфейса используя -Dnogui=true flag.",
                 "true".equalsIgnoreCase(System.getProperty("nogui", "false")));
-
-        // check deprecated nogui mode (new way of setting it is -Dnogui=true)
-        for(String arg: args)
-            if("-nogui".equalsIgnoreCase(arg))
-            {
-                prompt.alert(Prompt.Level.WARNING, "GUI", "Флаг -nogui заброшен. "
-                        + "Пожалуйста используйте флаг -Dnogui=true после имени jar. Например: java -jar -Dnogui=true MusicBotW.jar");
-                break;
-            }
-
+        
         // get and check latest version
         String version = OtherUtil.checkVersion(prompt);
 
