@@ -112,7 +112,7 @@ public class SetgameCmd extends OwnerCommand
             try
             {
                 event.getJDA().getPresence().setActivity(Activity.listening(title));
-                event.replySuccess("**"+event.getSelfUser().getName()+"** is now listening to `"+title+"`");
+                event.replySuccess("**"+event.getSelfUser().getName()+"** теперь слушает  `"+title+"`");
             } catch(Exception e) {
                 event.reply(event.getClient().getError()+" Игра не может быть установлена!");
             }
@@ -142,7 +142,7 @@ public class SetgameCmd extends OwnerCommand
             try
             {
                 event.getJDA().getPresence().setActivity(Activity.watching(title));
-                event.replySuccess("**"+event.getSelfUser().getName()+"** is now watching `"+title+"`");
+                event.replySuccess("**"+event.getSelfUser().getName()+"** теперь смотрит `"+title+"`");
             } catch(Exception e) {
                 event.reply(event.getClient().getError()+" Игра не может быть установлена!");
             }
