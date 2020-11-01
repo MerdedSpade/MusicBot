@@ -17,7 +17,7 @@ jobs:
     - name: Fix update notify
       uses: jacobtomlinson/gha-find-replace@master
       with: 
-        find: "0.2.10-actions"
+        find: "0.3.1-actions"
         replace: "auto-${{ github.sha }}" 
         include: "pom.xml"
     - name: Build with Maven
@@ -36,7 +36,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
         tag_name: auto-${{ github.sha }}
-        release_name: v0.2.10 - ${{ steps.time.outputs.time }}
+        release_name: v0.3.1 - ${{ steps.time.outputs.time }}
         body: |
           Автоматический релиз из коммита
           ${{ steps.changelog.outputs.changelog }}

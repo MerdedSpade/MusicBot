@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jagrosh</groupId>
     <artifactId>MusicBotW</artifactId>
-    <version>0.2.10-actions</version>
+    <version>0.3.1-actions</version>
     <packaging>jar</packaging>
 
     <repositories>
